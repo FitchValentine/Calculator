@@ -152,6 +152,10 @@ public class Calculator {
         roman = roman.replace("IIII", "IV");
         // "VIV" -> "IX"
         roman = roman.replace("VIV", "IX");
+        // "XXXXX" -> "L"
+        roman = roman.replace("XXXXX", "L");
+        // "LL" -> "C"
+        roman = roman.replace("LL", "C");
 
 
         // Возвращаем оптимизированную римскую строку
