@@ -20,51 +20,47 @@ public class Calculator {
     }
 
     public static void main(String[] args) {
-        try {
-            Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
-            // Запрос ввода пользователем выражения
-            System.out.print("Введите выражение: ");
-            String input = scanner.nextLine().trim();
+        // Запрос ввода пользователем выражения
+        System.out.print("Введите выражение: ");
+        String input = scanner.nextLine().trim();
 
-            // Переменные для хранения операндов и оператора
-            String operand1 = "";
-            String operator = "";
-            String operand2 = "";
+        // Переменные для хранения операндов и оператора
+        String operand1 = "";
+        String operator = "";
+        String operand2 = "";
 
-            // Цикл разбора введенного выражения на операнды и оператор
-            for (int i = 0; i < input.length(); i++) {
-                char ch = input.charAt(i);
-                if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
-                    operator += ch;
+        // Цикл разбора введенного выражения на операнды и оператор
+        for (int i = 0; i < input.length(); i++) {
+            char ch = input.charAt(i);
+            if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
+                operator += ch;
+            } else {
+                if (operator.isEmpty()) {
+                    operand1 += ch;
                 } else {
-                    if (operator.isEmpty()) {
-                        operand1 += ch;
-                    } else {
-                        operand2 += ch;
-                    }
+                    operand2 += ch;
                 }
             }
-
-            // Проверка на корректность введенных данных
-            if (!isValidInput(operand1, operand2, operator))
-                throw new IllegalArgumentException("Invalid input");
-
-            // Преобразование операндов в числа
-            int num1 = getNumber(operand1);
-            int num2 = getNumber(operand2);
-
-            // Выполнение операции
-            int result = calculate(num1, num2, operator);
-
-            // Вывод результата
-            if (isRoman(operand1, operand2))
-                System.out.println(toRoman(result));
-            else
-                System.out.println(result);
-        } catch (Exception e) {
-            System.out.println("throws Exception");
         }
+
+        // Проверка на корректность введенных данных
+        if (!isValidInput(operand1, operand2, operator))
+            throw new IllegalArgumentException("throws Exception");
+
+        // Преобразование операндов в числа
+        int num1 = getNumber(operand1);
+        int num2 = getNumber(operand2);
+
+        // Выполнение операции
+        int result = calculate(num1, num2, operator);
+
+        // Вывод результата
+        if (isRoman(operand1, operand2))
+            System.out.println(toRoman(result));
+        else
+            System.out.println(result);
     }
 
     // Метод для проверки корректности введенных данных
